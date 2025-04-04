@@ -1,7 +1,11 @@
 package com.example.learningcompose
 
 import android.graphics.drawable.shapes.Shape
+import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.outlined.*
+
 import android.os.Bundle
+import android.provider.CalendarContract.Colors
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -14,13 +18,30 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.CutCornerShape
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+import androidx.compose.material.icons.automirrored.outlined.Send
+import androidx.compose.material.icons.filled.Face
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.rounded.Face
+import androidx.compose.material.icons.rounded.FavoriteBorder
 import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.OutlinedTextField
 
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldColors
 
 import androidx.compose.runtime.Composable
 
@@ -38,15 +59,24 @@ import androidx.compose.ui.unit.dp
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardCapitalization
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.sp
+import androidx.core.text.isDigitsOnly
+import androidx.lint.kotlin.metadata.Visibility
 
-
-val jameelNoori=FontFamily(Font(R.font.jameelnoori))
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,7 +90,20 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun FirstApp() {
-Text(stringResource(id = R.string.Text),fontFamily = jameelNoori,fontSize = 30.sp)
+    var name by remember { mutableStateOf("") }
+    val context = LocalContext.current
+
+
+    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+        TextField(
+            value = name,
+            onValueChange = { name = it },
+            label = { Text(text = "Enter Your Name") }
+        )
+
+    }
+
+
 }
 
 
